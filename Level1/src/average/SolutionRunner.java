@@ -1,4 +1,4 @@
-package Average;
+package average;
 
 public class SolutionRunner {
 
