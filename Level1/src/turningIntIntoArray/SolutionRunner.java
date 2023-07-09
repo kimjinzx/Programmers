@@ -10,7 +10,7 @@ public class SolutionRunner {
 		
 		
 		
-		int[] result = sol.solution(34512);
+		int[] result = sol.solution(234);
 		System.out.println(Arrays.toString(result));
 
 
