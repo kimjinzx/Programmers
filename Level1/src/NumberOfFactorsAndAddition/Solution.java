@@ -33,22 +33,20 @@ package NumberOfFactorsAndAddition;
 public class Solution {
 	public int solution(int left, int right) { // 13  17
         int answer = 0;
-        
-        int x = left;
-        int abc = 0;
 
-        for(int i = x; i <= right; i++) { // left부터 right값 출력하는 for문 
+        for(int i = left; i <= right; i++) { // left부터 right값 출력하는 for문 
+        	int abc = 0;
         	for(int j = 1; j <= i; j++) { // 1부터 x값 까지 나눗셈 할 숫자찾는 for문 
         		if(i % j == 0){ // i값 안의 약수들 구하는 if문 
         			abc += 1;
         		}
+        	}
         		
         		if(abc % 2 == 0) {
         			answer += i;
         		}else {
         			answer -= i;
         			}
-        	}
         }
         return answer;
     }
