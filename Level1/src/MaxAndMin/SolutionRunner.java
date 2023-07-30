@@ -9,6 +9,6 @@ public class SolutionRunner {
 		String result = sol.solution("-5 1 2 3 4 99 104");
 		
 		System.out.println(result);
-	}
+	} 
  
 }
