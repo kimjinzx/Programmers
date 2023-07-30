@@ -10,5 +10,5 @@ public class SolutionRunner {
 		
 		System.out.println(result);
 	}
-
+ 
 }
