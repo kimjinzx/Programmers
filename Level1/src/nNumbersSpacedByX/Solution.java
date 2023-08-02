@@ -19,8 +19,8 @@ public class Solution {
         long[] answer = new long[n]; // n개의 값들이 들어가야 하므로 n을 사용하며 long으로 형변환을 해준다 
         
         for(int i = 0; i<n; i++) { // n값까지 반복문 실행  
-        	answer[i] = (long)x * (i+1);  // i는 0부터 시작이니 +1을 하여 x와 곱해주면 배수값이 나옴 
-        } // 제한조건을 맞추기 위해 long으로 형변환을 했지만 후에 배열값에 넣기 위해 answer[i]로 해준다 
+        	answer[i] = (long)x * (i+1);  // i는 0부터 시작이니 +1을 하여 x와 곱해주면 x의 배수값이 나옴 
+        } // 배열값에 넣기 위해 answer[i]로 해주었고, 제한조건을 맞추기 위해 x를 long으로 형변환을 해주었다.
         
         return answer;
     }
