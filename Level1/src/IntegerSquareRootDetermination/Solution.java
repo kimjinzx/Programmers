@@ -22,6 +22,19 @@ package IntegerSquareRootDetermination;
 // n이 제곱근의 값이 아닐경우 -1을 리턴 
 
 
+// 맨처음에 사용한 코드이지만 제곱근을 구하는 공식을 사용하고 싶어 아래 코드로 변경.
+// public long solution(long n) {
+//    long answer = 0;
+//
+//    for (long i = 1; i <= n; i++) {
+//        if (i * i == n) {
+//            answer = (i + 1) * (i + 1);
+//            break;
+//        }
+//        else answer = -1;
+//    }
+//    return answer;
+// }
 public class Solution {
 	public long solution(long n) {
 	    long answer = 0;
