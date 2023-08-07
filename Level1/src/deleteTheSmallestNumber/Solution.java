@@ -1,7 +1,5 @@
 package deleteTheSmallestNumber;
 
-import java.util.Arrays;
-import java.util.List;
 
 //문제 설명
 //정수를 저장한 배열, arr 에서 가장 작은 수를 제거한 배열을 리턴하는 함수, solution을 완성해주세요. 
@@ -16,14 +14,35 @@ import java.util.List;
 //[4,3,2,1]	[4,3,2]
 //[10]		[-1]
 
+
+// 순서를 오름차순으로 정렬하여 0번 인덱스 찾기
+
+import java.util.Arrays;
 public class Solution {
-//	public int[] solution(int[] arr) {
-//        int answer = 0;
-//        if(arr.length <= 1) {
-//        	 int[] answer = {-1};
-//             return answer;
-//        }
-//        
-//        return answer;
-//    }
+	  public int[] solution(int[] arr) {
+	        int min = Integer.MAX_VALUE; // 2,147,483,647
+	        
+	        	 // 원소값이 10일 경우의 조건문 
+	        if(arr.length == 1 && arr[0] == 10) { // arr의 인덱스가 1개이며 그 한개가 10일 경우에 대 다중 조건 
+		        int[] answer = {-1};
+		       	return answer;
+	        }
+
+	        for(int i = 0; i<arr.length; i++) {
+		        if(arr[i] < min) {
+		        	min = arr[i];
+		        }
+	        }
+	        
+	        int[] answer = new int[arr.length - 1]; // 최소값인 원소가 빠진 후의 배열크기로 배열 초기화 
+	        int idx = 0; // 인덱스 검색을 위한 정수 선언 
+	        for (int j = 0; j < arr.length; j++) {
+	            if (arr[j] != min) { // 최소값 찾기 조건문 
+	                answer[idx++] = arr[j]; 
+	            }
+	        }
+
+	        
+	        return answer;
+	    }
 }

@@ -6,7 +6,7 @@ public class SolutionRunner {
 		
 		Solution sol = new Solution();
 		
-		long result = sol.solution(144);
+		long result = sol.solution(121);
 		
 		System.out.println(result);
 	}

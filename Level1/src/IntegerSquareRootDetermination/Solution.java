@@ -22,7 +22,7 @@ package IntegerSquareRootDetermination;
 // n이 제곱근의 값이 아닐경우 -1을 리턴 
 
 
-// 맨처음에 사용한 코드이지만 제곱근을 구하는 공식을 사용하고 싶어 아래 코드로 변경.
+// 맨처음에 사용한 코드이지만 검증과정을 통한 공식을 사용하고 싶어 아래 코드로 변경.
 // public long solution(long n) {
 //    long answer = 0;
 //
@@ -39,7 +39,7 @@ public class Solution {
 	public long solution(long n) {
 	    long answer = 0;
 
-	    // 조선시대 제곱근 구하기 방법 사용 
+	    // 단순 나눗셈,뺄셈으로 제곱근을 구하는 홍길주의 제곱근 구하는 공식법 사용
 	    double num = (double) n / 2; // 소수점 처리를 위해 n을 명시적으로 double선언 하여 num값 출력 
 	    int i;
 
