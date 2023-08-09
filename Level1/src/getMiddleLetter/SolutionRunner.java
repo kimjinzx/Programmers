@@ -6,7 +6,7 @@ public class SolutionRunner {
 		
 		Solution sol = new Solution();
 		
-		String result = sol.solution("abcdef");
+		String result = sol.solution("abcdefg");
 	
 		System.out.println(result);
 	}
