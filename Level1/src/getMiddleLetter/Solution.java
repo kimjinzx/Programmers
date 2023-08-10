@@ -12,8 +12,8 @@ package getMiddleLetter;
 // "abcde"	"c"
 // "qwer"	"we"
 
-public class Solution {
-	// 방법 1 배열초기화 
+//public class Solution {
+//	// 방법 1 배열초기화 
 //	 public String solution(String s) {
 //	        String answer = "";
 //	        
@@ -39,6 +39,9 @@ public class Solution {
 //	        }
 //	        return answer;
 //	    }
+//}
+
+public class Solution {
 	// 방법 2  subString 활용 
 	 public String solution(String s) {
 	        String answer = "";
@@ -47,13 +50,15 @@ public class Solution {
 	        int sLength = s.length(); // s의 length를 정수로 선언 
 	        
 	        if(sLength % 2 == 0) { // 선언한 정수만 사용한 조건문, 짝수일 때 
-	        	str = s.substring(sLength / 2 - 1, sLength / 2 + 1); // s의 길이가 6이라면 subString으로 인덱스 2~3까지 (2부터 4전까지인 3까지) 출력  
+	        	str = s.substring(sLength / 2 - 1, sLength / 2 + 1); 
+	        	// s의 길이가 6이라면 subString으로 인덱스 2~3까지 (2부터 4전까지인 3까지) 출력  
 	        }else { // 홀수 일 때 
-	        	str = s.substring(sLength / 2, sLength / 2 + 1 ); // s의 길이가 7이라면 subString으로 인덱스 3만 출력 (3부터 4전까지 출력이므로 3만출력)
+	        	str = s.substring(sLength / 2, sLength / 2 + 1 ); 
+	        	// s의 길이가 7이라면 subString으로 인덱스 3만 출력 (3부터 4전까지 출력이므로 3만출력)
 	        }
 	        
 	        	answer = str;
 	        
 	        return answer;
 	 }
-}
+ }
