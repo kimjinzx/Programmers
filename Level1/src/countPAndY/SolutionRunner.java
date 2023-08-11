@@ -1,12 +1,14 @@
-package stringDescendingOrder;
+package countPAndY;
 
 public class SolutionRunner {
 
 	public static void main(String[] args) {
+
 		Solution sol = new Solution();
 		
-		String result = sol.solution("abcd");
+		boolean result = sol.solution("pPPpoooyYyy");
 		
 		System.out.println(result);
 	}
+
 }

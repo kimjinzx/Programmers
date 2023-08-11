@@ -20,7 +20,7 @@ public class Solution {
         
         String[] str = s.split(""); // 배열에 split으로 쪼개어 담기 
         Arrays.sort(str, Collections.reverseOrder()); // 배열정렬 함수 사용
-        											  // Collections.reverseOrder()을 사용하여 내림차순 적용 
+        			  // Collections.reverseOrder()을 사용하여 내림차순 적용 
         for(int i = 0; i<str.length; i++) {
         	answer += str[i];  
         }
