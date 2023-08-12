@@ -44,7 +44,7 @@ public class Solution {
 			Arrays.sort(A); // [1,2,4]
 			Arrays.sort(B); // [4,4,5]
 			
-			for(int i = 0; i<A.length; i++) {
+			for(int i = 0; i<A.length; i++) { 
 				answer += (A[A.length-i-1]*B[i]); 
 			}
 			
