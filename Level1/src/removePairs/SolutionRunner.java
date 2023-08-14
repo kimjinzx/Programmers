@@ -1,10 +1,12 @@
-package representationOfNumbers;
+package removePairs;
+
 
 public class SolutionRunner {
     public static void main(String[] args) {
-        Solution sol = new Solution();
-        int num = sol.solution(15);
 
-        System.out.println(num);
+        Solution sol = new Solution();
+        int str = sol.solution("baabaa");
+
+        System.out.println(str);
     }
 }

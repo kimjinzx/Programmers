@@ -19,15 +19,15 @@ public class Solution {
     public int solution(int n) { // 15
         int answer = 0;
 
-        for(int i = 1; i<=n; i++) { // 첫 숫자로 시작될 1.2.3...에 대한 반복문
-            int sum = 0; // sum선언
+        for(int i = 1; i<=n; i++) { // 연산식의 첫 숫자에 대한 반복문 ( +루프 횟수 설정 )
+            int sum = 0; // 루프속 sum선언
             for (int j = i; j<=n; j++) { // 위의 반복문을 사용하여 루프를 돌릴 2중 for문
                 sum += j;
-                // 첫번째 반복문의 i를 가지고 덧셈을 차례대로 했을경우 sum이 n값으로 나오는지 여부 판단
+                // i값으로 생성된 j를 가지고 덧셈을 차례대로 했을경우 sum이 n값으로 나오는지 여부 판단
                 if (sum == n) {
-                    answer++; // n값이 맞아 떨어질 경우 증분
+                    answer++; // n값으로 맞아 떨어질 경우 증분
                     break;
-                }else if(sum>n) { // n값과 다른값이 나올경우 break로 다시 루프 시작
+                }else if(sum>n) { // n값을 넘어선(맞아 떨어지지 않은) 값이 나올경우 break
                     break;
                 }
             }
