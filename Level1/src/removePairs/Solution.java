@@ -20,32 +20,44 @@ package removePairs;
 // 문자열이 남아있지만 짝지어 제거할 수 있는 문자열이 더 이상 존재하지 않기 때문에 0을 반환합니다.
 
 import java.util.Stack;
+//public class Solution {
+//    public int solution(String s) { // baabaa
+//        int answer = 0;
+//        Stack<Character> st = new Stack<>();
+//
+//        for(char ch : s.toCharArray()){
+//            if(!st.isEmpty() && st.peek() == ch){ // 스택이 비어있지 않고, top값이 ch와 같다면
+//                st.pop(); // top값을 삭제
+//            }else{
+//                st.push(ch); // 위의 조건에 부합하지 않다면 현재 ch의 값을 추가
+//            }
+//        }
+//        // baabaa일 경우 진행순서
+//        // 맨처음엔 비어있으므로 b추가
+//        // b가 들어가있으며 a를 추가하는 과정에서, top값(b)를 peek(조회)하여 ch(b)와 같은지 비교
+//        // 다르므로 a push(추가)
+//        // 스택엔 b,a가 있는 상태이며, top값(a)와 ch(a)가 같은지 비교
+//        // 같으므로 top값(a) 삭제되고 ch(a)도 push되지 않음
+//        // 해당 구문 반복루프...
+//
+//        return (st.isEmpty() ? 1:0);
+//    }
 public class Solution {
-    public int solution(String s) { // baabaa
+    public int solution(String s) {
         int answer = 0;
+        // 방법 2 (StringBuilder 활용)
+        StringBuilder sb = new StringBuilder();
 
-        Stack<Character> st = new Stack<>();
-
-        for(char ch : s.toCharArray()){
-            if(!st.isEmpty() && st.peek() == ch){ // 스택이 비어있지 않고, top값이 ch와 같다면
-                st.pop(); // top값을 삭제
-            }else{
-                st.push(ch); // 위의 조건에 부합하지 않다면 현재 ch의 값을 추가
+        for (char ch : s.toCharArray()) {
+            if (sb.length() > 0 && sb.charAt(sb.length() - 1) == ch) { // sb가 비어있지 않고 sb의 마지막 문자와 ch의 값이 동일하면
+                sb.deleteCharAt(sb.length() - 1); // sb의 마지막 문자를 삭제
+            } else {
+                sb.append(ch); // 위의 조건에 부합하지 않다면 ch를 append(추가)
             }
         }
-        // baabaa일 경우 진행순서
-        // 맨처음엔 비어있으므로 b추가
-        // b가 들어가있으며 a를 추가하는 과정에서, top값(b)를 peek(조회)하여 ch(b)와 같은지 비교
-        // 다르므로 a push(추가)
-        // 스택엔 b,a가 있는 상태이며, top값(a)와 ch(a)가 같은지 비교
-        // 같으므로 top값(a) 삭제되고 ch(a)도 push되지 않음
-        // 해당 구문 반복루프...
+        // 방법1과 비슷한 원리와 진행순서 작업이며
+        // 문자열 작업에 용이한 StringBuilder를 사용, 스택대신 lenth의 연산 및 메소드를 사용
 
-        if(st.isEmpty()){
-            answer = 1;
-        }else {
-            answer = 0;
-        }
-        return answer;
+        return sb.length() == 0 ? 1 : 0;
     }
 }
