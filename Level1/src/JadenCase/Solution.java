@@ -27,7 +27,7 @@ public class Solution {
 
         for(int i = 0; i<sb.length(); i++){
             if(i==0 || sb.charAt(i-1) == ' ' && !Character.isDigit(sb.charAt(i))){
-                // 첫번째 문자이거나, i-1이 공백이면서 숫자가 아닐경우
+                // i가 첫번째 문자이거나, i-1이 공백이면서 숫자가 아닐경우
                 sb.setCharAt(i, Character.toUpperCase(sb.charAt(i)));
                 // setCharAt(문자열 교체)메소드를 사용해 현재 i값을 대문자로 치환
             }
