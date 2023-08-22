@@ -48,10 +48,10 @@ public class Solution {
                 count--;
             }
             if(count < 0) return false;
-            // 만약 위의 조건문에서 시작부터 마이너스 값이 나온다면 s의 첫문자는 ')'로 false리턴
+            // 만약 위 조건문의 첫 루프부터 마이너스 값이 나온다면 s의 첫문자는 ')'이므로 false리턴
         }
 
-        if(count != 0) answer = false; // count의 결과값이 0이 아니라면 true리턴
+        if(count != 0) answer = false; // count의 결과값이 0이 아니라면 false리턴
 
         return answer;
     }
