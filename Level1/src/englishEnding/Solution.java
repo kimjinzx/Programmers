@@ -47,18 +47,27 @@ package englishEnding;
 // 와 같은 순서로 말을 하게 되며, 1번 사람이 자신의 세 번째 차례에 'r'로 시작하는 단어 대신,
 // n으로 시작하는 now를 말했기 때문에 이때 처음 탈락자가 나오게 됩니다.
 
-
-// 순서
-//
+import java.util.ArrayList;
 public class Solution {
-    public int[] Solution(int n, String[] words) { // 4, 8 //정답은 첫번째 사람이 세번째 탈락 (1,3)
-        int[] answer = {};
-        int arrNum = words.length; // 8
+    public int[] solution(int n, String[] words) {
+        ArrayList<String> al = new ArrayList<>(); //ArraysList선언
+        int[] answer = {0, 0};
 
-        for(int i = 0; i< words.length; i++){
+        for(int i = 0; i<words.length; i++){
+            if(al.contains(words[i])){ // al에 배열요소들을 담으며 중복체크
+                answer[0] = i % n + 1; // 조건에 부합하면 해당 요소의 차례인 사람이 탈락
+                answer[1] = i / n + 1; // 탈락한 사람이 몇번째 차례인지 구하기
+                break;
+            }
+            al.add(words[i]); // al에 담기
 
+            //첫번째 요소가 아니면서, 현재 요소의 첫알파벳과 이전요소의 마지막 알파벳이 다를경우
+            if(i>0 && words[i].charAt(0) != words[i-1].charAt(words[i-1].length()-1)){
+                answer[0] = i % n + 1;  // 조건에 부합하면 해당 요소의 차례인 사람이 탈락
+                answer[1] = i / n + 1;  // 탈락한 사람이 몇번째 차례인지 구하기
+                break;
+            }
         }
-
         return answer;
     }
 }
