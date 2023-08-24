@@ -1,11 +1,11 @@
-package expectedBracket;
+package fibonacci;
 
 public class SolutionRunner {
     public static void main(String[] args) {
 
         Solution sol = new Solution();
-        int expected = sol.solution(8, 4, 7);
+        int power = sol.solution(20);
 
-        System.out.println(expected);
+        System.out.println(power);
     }
 }
