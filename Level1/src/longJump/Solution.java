@@ -23,6 +23,7 @@ package longJump;
 // (1칸, 2칸)
 // (1칸, 1칸, 1칸)
 // 총 3가지 방법으로 멀리 뛸 수 있습니다.
+
 public class Solution {
     public long solution(int n) {
 
@@ -33,6 +34,9 @@ public class Solution {
 
         for (int i = 3; i<=n; i++){
             dp[i] = (dp[i-1] + dp[i-2]) % 1234567; // 피보나치 수 구하기
+            // dp[3] = 2+1
+            // dp[4] = 2+3
+            // dp[5] = 3+5 ...
         }
         return dp[n];
     }
