@@ -1,33 +1,89 @@
 package parenthesesRotation;
 
-import java.util.Stack;
+// 문제 설명
+// 다음 규칙을 지키는 문자열을 올바른 괄호 문자열이라고 정의합니다.
+// (), [], {} 는 모두 올바른 괄호 문자열입니다.
+// 만약 A가 올바른 괄호 문자열이라면, (A), [A], {A} 도 올바른 괄호 문자열입니다. 예를 들어, [] 가 올바른 괄호 문자열이므로, ([]) 도 올바른 괄호 문자열입니다.
+// 만약 A, B가 올바른 괄호 문자열이라면, AB 도 올바른 괄호 문자열입니다. 예를 들어, {} 와 ([]) 가 올바른 괄호 문자열이므로, {}([]) 도 올바른 괄호 문자열입니다.
+// 대괄호, 중괄호, 그리고 소괄호로 이루어진 문자열 s가 매개변수로 주어집니다. 이 s를 왼쪽으로 x (0 ≤ x < (s의 길이)) 칸만큼 회전시켰을 때
+// s가 올바른 괄호 문자열이 되게 하는 x의 개수를 return 하도록 solution 함수를 완성해주세요.
 
+// 제한사항
+// s의 길이는 1 이상 1,000 이하입니다.
+// 입출력 예
+// s    	result
+// "[](){}"	3
+// "}]()[{"	2
+// "[)(]"	0
+// "}}}"	0
+// 입출력 예 설명
+// 입출력 예 #1
+// 다음 표는 "[](){}" 를 회전시킨 모습을 나타낸 것입니다.
+// x	s를 왼쪽으로 x칸만큼 회전	올바른 괄호 문자열?
+// 0	"[](){}"	O
+// 1	"](){}["	X
+// 2	"(){}[]"	O
+// 3	"){}[]("	X
+// 4	"{}[]()"	O
+// 5	"}[](){"	X
+// 올바른 괄호 문자열이 되는 x가 3개이므로, 3을 return 해야 합니다.
+// 입출력 예 #2
+// 다음 표는 "}]()[{" 를 회전시킨 모습을 나타낸 것입니다.
+// x	s를 왼쪽으로 x칸만큼 회전	올바른 괄호 문자열?
+// 0	"}]()[{"	X
+// 1	"]()[{}"	X
+// 2	"()[{}]"	O
+// 3	")[{}]("	X
+// 4	"[{}]()"	O
+// 5	"{}]()["	X
+// 올바른 괄호 문자열이 되는 x가 2개이므로, 2를 return 해야 합니다.
+// 입출력 예 #3
+// s를 어떻게 회전하더라도 올바른 괄호 문자열을 만들 수 없으므로, 0을 return 해야 합니다.
+// 입출력 예 #4
+// s를 어떻게 회전하더라도 올바른 괄호 문자열을 만들 수 없으므로, 0을 return 해야 합니다.
+
+import java.util.Stack;
 public class Solution {
-    public int solution(String s) {
+    public int solution(String s) { // [](){} 일 때
             int answer = 0;
 
-            for (int i = 0; i < s.length(); i++) {
-                Stack<Character> stack = new Stack<>();
-                String str = s.substring(i, s.length()) + s.substring(0, i);
-                for (int j = 0; j < str.length(); j++) {
-                    char c = str.charAt(j);
-                    if (stack.isEmpty()) {
-                        stack.push(c);
-                    } else if (c == ')' && stack.peek() == '(') {
-                        stack.pop();
-                    } else if (c == '}' && stack.peek() == '{') {
-                        stack.pop();
-                    } else if (c == ']' && stack.peek() == '[') {
-                        stack.pop();
-                    } else {
-                        stack.push(c);
-                    }
-                }
-                if (stack.isEmpty()) {
-                    answer++;
-                }
+            if(s.length()%2!=0){  // 괄호의 개수가 홀수일 경우 0리턴
+                return answer;
             }
 
+        for(int i = 0; i<s.length(); i++) { // s의 인덱스 길이만큼 반복
+            Stack<Character> st = new Stack<>(); // Character로 스택선언
+            String spin = s.substring(i, s.length()) + s.substring(0, i); // subString으로 i부터 마지막 인덱스까지 + 첫인덱스(0번)을
+                                                                          // 각각 잘라 이어 붙여 회전시키듯이 문자열을 결합
+            for(int j = 0; j<spin.length(); j++){ // 알맞는 괄호인지 구분하는 반복문 시작
+                char ch = spin.charAt(j); // j의 값을 문자로 나누어 판별
+                if(st.isEmpty()){ // 스택이 비어있을 경우(첫 시작) 그냥 push만
+                    st.push(ch);
+                } else if (st.peek() == '(' && ch == ')') { // 조회된(peek) 문자가 (이면서 현재의 ch가 )일 경우 pop
+                    st.pop();
+                } else if (st.peek() == '[' && ch == ']') {
+                    st.pop();
+                } else if (st.peek() == '{' && ch == '}') {
+                    st.pop();
+                } else { // 모두 아닐경우 그냥 push
+                    st.push(ch);
+                }
+            }
+            if(st.isEmpty()){
+                answer++;
+                // 진행순서 [](){}
+                // 0. [
+                // 1.    +1
+                // 2. (
+                // 3.    +2
+                // 4. {
+                // 5.    +3
+                // 설명) 현재의 j와 j+1인덱스의 문자를 대치하여
+                // 같은 소.중.대 괄호끼리 모두 올바른 방향으로 있는지 구분만 하면 되기 때문에
+                // 조건문을 통해 스택이 비어질 때마다 answer를 증분
+                // 만약 방향이 다른 괄호가 있다면 스택은 비어지지 않아 answer는 증분을 못함 (0 리턴)
+            }
+        }
             return answer;
         }
 }

@@ -5,7 +5,7 @@ public class SolutionRunner {
 
         Solution sol = new Solution();
 
-        String input = "";
+        String input = "[](){}";
         int power = sol.solution(input);
 
         System.out.println(power);
